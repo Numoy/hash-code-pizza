@@ -12,43 +12,15 @@ public class Hashcode {
 
     public static void main(String[] args) throws IOException {
 
-        try (Scanner scanner =  new Scanner(new File("src/a_example.in"),
-                "UTF-8")){
-            scanner.useLocale(Locale.GERMANY);
-            int i = 0;
-            target = scanner.nextInt();
-            values = new int[scanner.nextInt()];
-
-
-            while (scanner.hasNext()) {
-                    values[i] = scanner.nextInt();
-                    i++;
-            }
-        }
-        System.out.println(target);
-        for (int i:
-             values) {
-            System.out.println(i);
-
-        }
+        readFile("src/a_example.in");
 
         findNext(values.length - 1);
 
+        outputSolution();
 
-
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter("solution.out", true))) {
-            writer.append(String.valueOf(selected.size()));
-            writer.append("\n");
-            for(Integer number : selected) {
-                writer.append(number + " ");
-            }
-        }
-
-        System.out.println(sumOfSelected());
+        System.out.println(selected.size());
         System.out.println(selected);
-
     }
-
 
     public static void findNext(int startIndex) {
         for (int i = startIndex; i >= 0; i--) {
@@ -84,6 +56,32 @@ public class Hashcode {
             sum += values[i];
         }
         return sum;
+    }
+
+    public static void readFile(String filePath) throws FileNotFoundException {
+        try (Scanner scanner = new Scanner(new File(filePath),
+                "UTF-8")) {
+            scanner.useLocale(Locale.GERMANY);
+            int i = 0;
+            target = scanner.nextInt();
+            values = new int[scanner.nextInt()];
+
+
+            while (scanner.hasNext()) {
+                values[i] = scanner.nextInt();
+                i++;
+            }
+        }
+    }
+
+    public static void outputSolution() throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("solution.out", true))) {
+            writer.append(String.valueOf(solution.size()));
+            writer.append("\n");
+            for (Integer number : solution) {
+                writer.append(number + " ");
+            }
+        }
     }
 
 
