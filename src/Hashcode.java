@@ -33,14 +33,15 @@ public class Hashcode {
             }
             else
             {
-                selected.remove( selected.size() -1 );
-                if ( target - sumOfSelected() < missedPoints )
+
+                if ( sumWithoutLastElement() < missedPoints )
                 {
                     solution = new ArrayList<>();
                     solution.addAll(selected);
-                    missedPoints = target - sumOfSelected();
+                    missedPoints = target - sumWithoutLastElement();
                 }
             }
+            selected.remove( selected.size() -1 );
         }
     }
 
@@ -48,6 +49,14 @@ public class Hashcode {
         int sum = 0;
         for (Integer i : selected) {
             sum += values[i.intValue()];
+        }
+        return sum;
+    }
+
+    public static int sumWithoutLastElement() {
+        int sum = 0;
+        for(int i = 0; i < selected.size() -1; i++) {
+            sum += values[i];
         }
         return sum;
     }
