@@ -1,11 +1,12 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class Hashcode {
-    static int target = 100;
-    static int[] values = {4, 14, 15, 18, 29, 32, 36, 82, 95, 95};
+    static int target = 505000000;
+    static int[] values = {
+
+    };
     static List<Integer> selected = new ArrayList<>();
 
     static List<Integer> solution = new ArrayList<>();
@@ -13,6 +14,26 @@ public class Hashcode {
 
 
     public static void main(String[] args) {
+
+        Scanner scanner;
+        try {
+            scanner = new Scanner(new File("src/test.in"),
+                    "UTF-8");
+            scanner.useLocale(Locale.GERMANY);
+            int i = 0;
+            target = scanner.nextInt();
+            values = new int[scanner.nextInt()];
+
+
+            while (scanner.hasNext()) {
+                    values[i] = scanner.nextInt();
+                    i++;
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
         findNext(values.length - 1);
         System.out.println(sumOfSelected());
