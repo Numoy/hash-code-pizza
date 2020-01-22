@@ -33,7 +33,7 @@ public class Hashcode {
             else
             {
                 selected.remove( selected.size() -1 );
-                if ( sumOfSelected() < missedPoints )
+                if ( target - sumOfSelected() < missedPoints )
                 {
                     solution = new ArrayList<>();
                     solution.addAll(selected);
