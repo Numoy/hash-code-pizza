@@ -6,9 +6,9 @@ import java.util.List;
 public class Hashcode {
     static int target = 100;
     static int[] values = {4,14,15,18,29,32,36,82,95,95};
-    static List<Integer> selected = new ArrayList<>(100);
+    static List<Integer> selected = new ArrayList<>();
 
-    static List<Integer> solution  = new ArrayList<>(100);
+    static List<Integer> solution  = new ArrayList<>();
     static int missedPoints = Integer.MAX_VALUE;
 
 
