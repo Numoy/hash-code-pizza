@@ -31,16 +31,13 @@ public class Hashcode {
             if( sumOfSelected() < target ) {
                 findNext(i - 1);
             }
-            else
-            {
-
-                if ( sumWithoutLastElement() < missedPoints )
+            else if ( target - sumWithoutLastElement() < missedPoints )
                 {
                     solution = new ArrayList<>();
                     solution.addAll(selected);
                     missedPoints = target - sumWithoutLastElement();
                 }
-            }
+
             selected.remove( selected.size() -1 );
         }
     }
