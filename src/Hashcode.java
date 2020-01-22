@@ -1,24 +1,19 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class Hashcode {
-    static int target = 505000000;
-    static int[] values = {
-
-    };
+    static int target;
+    static int[] values;
     static List<Integer> selected = new ArrayList<>();
 
     static List<Integer> solution = new ArrayList<>();
     static int missedPoints = Integer.MAX_VALUE;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner scanner;
-        try {
-            scanner = new Scanner(new File("src/test.in"),
-                    "UTF-8");
+        try (Scanner scanner =  new Scanner(new File("src/a_example.in"),
+                "UTF-8")){
             scanner.useLocale(Locale.GERMANY);
             int i = 0;
             target = scanner.nextInt();
@@ -29,17 +24,31 @@ public class Hashcode {
                     values[i] = scanner.nextInt();
                     i++;
             }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        }
+        System.out.println(target);
+        for (int i:
+             values) {
+            System.out.println(i);
+
         }
 
-
         findNext(values.length - 1);
+
+
+
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("solution.out", true))) {
+            writer.append(String.valueOf(selected.size()));
+            writer.append("\n");
+            for(Integer number : selected) {
+                writer.append(number + " ");
+            }
+        }
+
         System.out.println(sumOfSelected());
         System.out.println(selected);
 
     }
+
 
     public static void findNext(int startIndex) {
         for (int i = startIndex; i >= 0; i--) {
