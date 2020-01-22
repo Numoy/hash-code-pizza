@@ -28,8 +28,9 @@ public class Hashcode {
             }
 
             selected.add(Integer.valueOf(i));
-            if( sumOfSelected() < target )
+            if( sumOfSelected() < target ) {
                 findNext(i - 1);
+            }
             else
             {
                 selected.remove( selected.size() -1 );
@@ -37,7 +38,7 @@ public class Hashcode {
                 {
                     solution = new ArrayList<>();
                     solution.addAll(selected);
-                    missedPoints = sumOfSelected();
+                    missedPoints = target - sumOfSelected();
                 }
             }
         }
